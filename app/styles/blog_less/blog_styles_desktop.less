@@ -1,0 +1,31 @@
+﻿@import "common/reset.less";
+@import "common/colors.less";
+@import "common/mixins.less";
+@import "common/common.less";
+@import "common/icons.less";
+
+body {
+font-size: 12px;
+}
+
+/*** Content Styles ***/
+.blog-content {
+	width: 982px;
+	margin: 0 auto;
+	padding: 50px 30px 0 30px;
+	.boxSizing(border-box);
+}
+
+@import "desktop/logo.less";
+@import "desktop/navigation.less";
+@import "desktop/info_block.less";
+@import "desktop/article.less";
+
+		
+/* Rewritten styles for Yandex social icons */
+.article-data .b-share-counter {display: inline;}
+.b-share_theme_counter .b-share-btn__wrap > A {
+	background-color: #d6dee6;
+}
+		
+		

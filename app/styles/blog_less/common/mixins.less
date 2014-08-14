@@ -1,0 +1,49 @@
+.boxSizing(@value) {
+	-webkit-box-sizing: @value; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: @value;    /* Firefox, other Gecko */
+	box-sizing: @value; 
+}
+
+.tagStyle(@tagColor; @tagHeight; @circleColor; @circleSize){ 
+	background-color: @tagColor;
+	height: @tagHeight;
+	display: inline-block;
+	position: relative;
+	
+	&:before, &:after {
+		content: "";
+		position: absolute;	
+	}
+	
+	&:before {
+		background-color: @circleColor;
+		border-radius: 1rem;
+		height: @circleSize;
+		width: @circleSize;
+		right: 0;
+		top: (@tagHeight/2) - (@circleSize/2);
+	}
+	
+	&:after {
+		width: 0;
+		height: 0;
+		border-width: @tagHeight/2 (@tagHeight/2 + 0.1rem);
+		border-style: solid;
+		border-color: transparent transparent transparent @tagColor;
+		right: -2 * (@tagHeight/2 + 0.1rem);
+	}
+}
+
+.selectedItemPseudoArrow(@arrowColor; @arrowHeight) {
+	border-color: @arrowColor transparent transparent;
+	border-style: solid;
+	border-width: @arrowHeight (@arrowHeight + 0.2rem);
+	bottom: -(2 * @arrowHeight);
+	content: "";
+	display: block;
+	height: 0;
+	left: 50%;
+	position: absolute;
+	width: 0;
+	margin-left: -(@arrowHeight + 0.2rem);
+}

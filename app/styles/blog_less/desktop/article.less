@@ -1,0 +1,72 @@
+@import "../common/colors.less";
+
+.blog-articles {
+	margin-right: 255px;
+	
+	ARTICLE {
+		padding: 0 25px 50px 0;
+	}
+	
+	.article-text {
+		padding: 15px 0;
+		font-size: 12px;
+		line-height: 16px;
+		text-align: justify;
+	}
+	
+	BUTTON {
+		margin-bottom: 30px;
+	}
+}
+		
+FIGURE {
+	IMG {
+		width: 100%;
+		display: block;
+	}
+	
+	FIGCAPTION {
+		font-family: "Arial Narrow", Arial, sans-serif;
+		font-size: 20px;
+		font-weight: bold;
+		padding: 14px 0;
+		
+		.blog-title {
+			color: @textBlogColor;
+			text-decoration: none;
+			
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+}	
+		
+.article-data {
+	padding: 15px 5px;
+	border-bottom: 1px solid @borderArticleColor;
+	border-top: 1px solid @borderArticleColor;
+	position: relative;
+	
+	&-item {
+		display: inline-block;
+		color: @textBlogColor;
+		font-size: 12px;
+		padding-right: 16px;
+		
+		& .date-time-icon, & .author-icon {
+			padding-left: 20px;
+		}
+		
+		.author-link:hover {
+			text-decoration: underline;
+		}
+		
+		&.social {
+			position: absolute;
+			top: 8px;
+			right: 0;
+			padding-right: 0;
+		}
+	}
+}

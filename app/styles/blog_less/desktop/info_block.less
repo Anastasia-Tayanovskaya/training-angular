@@ -1,0 +1,58 @@
+﻿@import "../common/colors.less";
+@import "../common/mixins.less";
+
+.info-block {
+	position: relative;
+	width: 255px;
+	float: right;
+	clear: right;
+	padding-bottom: 30px;
+	
+	P {
+		text-align: justify;
+		line-height: 16px;
+		font-size: 12px;
+	}
+	
+	.info-block-title {
+		padding-left: 40px;
+		text-transform: uppercase;
+		display: block;
+		border-bottom: 5px solid @bgDesktopTagColor;
+		line-height: 25px;
+		color: @textBlogCaptionColor;
+		margin-bottom: 15px;
+		font-size: 18px;
+	}
+	
+	.info-block-sign {
+		width: 30px;
+		height: 30px;
+		background: @bgDesktopTagColor;
+		color: @textBlogAlternativeColor;
+		position: absolute;
+		top:0;
+		left: 0;
+		line-height: 30px;
+		text-align: center;
+		font-size: 18px;
+	}
+}
+
+.blog-tag {
+	.tagStyle(@bgDesktopTagColor, 1.8rem, @bgDesktopTagCircleColor, 0.8rem);
+	font-size: 12px;
+	padding: 0 1.7rem 0 1.2rem;
+	line-height: 1.8rem;
+	margin: 0 1rem 0.5rem 0;
+	color: #fff;
+}
+		
+.blog-tag:hover {
+	background-color: @bgDesktopTagHoverColor;
+	cursor: pointer;
+}
+
+.blog-tag:hover:after {
+	border-color: transparent transparent transparent @bgDesktopTagHoverColor;
+}

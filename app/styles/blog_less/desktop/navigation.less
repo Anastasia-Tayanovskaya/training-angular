@@ -1,0 +1,51 @@
+﻿@import "../common/colors.less";
+@import "../common/mixins.less";
+
+NAV {
+	width: 100%;
+	min-width: 982px;
+	z-index: 10;
+}
+
+.navigation-menu {
+	background-color: @bgMenuBarColor;
+	border-bottom: 4px solid @borderMenuBarColor;
+	height: 56px;
+	.boxSizing(border-box);
+	text-align: center;
+	
+	& > LI {
+		text-transform: uppercase;
+		text-align: center;
+		font-size: 18px;	
+		color: @textBlogAlternativeColor;
+		display: inline-block;
+		line-height: 50px;
+		position: relative;
+		
+		& > A {
+			color: @textBlogAlternativeColor;
+			text-decoration: none;
+			padding: 0 28px;
+			box-sizing: border-box;
+			border-top: 3px solid @bgMenuBarColor;
+			border-bottom: 3px solid @bgMenuBarColor;
+			height: 52px;
+			display: block;
+			
+			&:hover {
+				background-color: @bgMenuBarItemColor;
+			}
+		}
+		
+		&.selected {
+			&:before {
+				.selectedItemPseudoArrow(@borderMenuBarColor, 1rem);
+			}
+			
+			&:after {
+				.selectedItemPseudoArrow(@bgMenuBarColor, 0.8rem);
+			}
+		}
+	}
+}
