@@ -1,1 +1,32 @@
-<p>This is the popup view.</p>
+<div class="modal fade" id="articleModal" tabindex="-1" role="dialog" aria-labelledby="articleModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3 class="modal-title">Add new article</h3>
+			</div>
+			<form class="form-horizontal" name="articleForm" role="form" ng-submit="submitArticle()" novalidate>
+				<div class="modal-body">
+					<div ng-class="{'has-error': articleForm.author.$invalid, 'has-success': !articleForm.author.$invalid}">
+						<label>Author: <input type="text" name="author" class="form-control" ng-model="newArticle.author" required /></label>
+						<span ng-show="articleForm.author.$error.required">Please specify the author</span>
+					</div>
+					<div>
+						<label>Image URL: <input type="text" name="imageURL" class="form-control" ng-model="newArticle.imageURL" /></label>
+					</div>
+					<div ng-class="{'has-error': articleForm.title.$invalid, 'has-success': !articleForm.title.$invalid}">
+						<label>Title: <input type="text" name="title" class="form-control" ng-model="newArticle.title" required /></label>
+						<span ng-show="articleForm.title.$error.required">Please specify the title</span>
+					</div>
+					<div ng-class="{'has-error': articleForm.text.$invalid, 'has-success': !articleForm.text.$invalid}">
+						<label>Text: <textarea name="text" class="form-control" ng-model="newArticle.text" required ></textarea></label>
+						<span ng-show="articleForm.text.$error.required">Please specify the text</span>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<input type="submit" class="btn btn-primary" ng-disabled="articleForm.$invalid" value="Submit" />
+					<button type="button" class="btn btn-warning" ng-click="cancelDialog()">Cancel</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

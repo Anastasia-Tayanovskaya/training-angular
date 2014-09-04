@@ -30,10 +30,13 @@ angular.module('trainingAngularApp')
 
 		$scope.articles = JSON.parse(jsonArticles).articles;
 		$scope.newArticle = {};
-		$scope.articleModal = $('#articleModal');
 		
 		$scope.openDialog = function() {
-			$scope.articleModal.modal();
+			if (!$scope.articleModal) {
+				$scope.articleModal = $('#articleModal');
+				$scope.articleModal.modal();
+			}
+			$scope.articleModal.modal('show');
 		}
 		
 		$scope.cancelDialog = function() {

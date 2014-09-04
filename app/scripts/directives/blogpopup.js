@@ -9,10 +9,9 @@
 angular.module('trainingAngularApp')
   .directive('blogPopup', function () {
     return {
-      template: '<div></div>',
-      restrict: 'E',
-      link: function postLink(scope, element, attrs) {
-        element.text('this is the blogPopup directive');
-      }
+		restrict: 'E',
+		replace: true,
+		link: function postLink(scope, element, attrs) {},
+		templateUrl: '../../views/popup.html'
     };
   });

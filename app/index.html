@@ -71,98 +71,14 @@
 			</section>
 			
 			<section class="blog-articles">
-				<article ng-repeat="article in articles">
-					<figure>
-						<img alt="" ng-src="{{article.image}}" />
-						<figcaption><a class="blog-title" href="#">{{article.title}}</a></figcaption>
-					</figure>
-					<div class="article-data">
-						<div class="article-data-item">
-							<span class="date-time-icon">{{article.date}}</span>
-						</div>
-						<div class="article-data-item">
-							<span class="author-icon">by <a class="author-link" href="#">{{article.author}}</a></span>
-						</div>
-						<div class="article-data-item social">
-							<div data-yasharetheme="counter" data-yasharequickservices="yaru,vkontakte,facebook,twitter,gplus" data-yasharel10n="ru" class="yashare-auto-init b-share_theme_counter">
-								<span class="b-share">
-									<span class="b-share-btn__wrap">
-										<a data-service="facebook" href="#" class="b-share__handle b-share__link b-share-btn__facebook" title="Facebook" target="_blank" rel="nofollow">
-											<span class="b-share-icon b-share-icon_facebook"></span>
-											<span class="b-share-counter">16</span>
-										</a>
-									</span>
-									<span class="b-share-btn__wrap">
-										<a data-service="gplus" href="#" class="b-share__handle b-share__link b-share-btn__gplus" title="Google Plus" target="_blank" rel="nofollow">
-											<span class="b-share-icon b-share-icon_gplus"></span>
-											<span class="b-share-counter">7</span>
-										</a>
-									</span>
-									<span class="b-share-btn__wrap">
-										<a data-service="twitter" href="#" class="b-share__handle b-share__link b-share-btn__twitter" title="Twitter" target="_blank" rel="nofollow">
-											<span class="b-share-icon b-share-icon_twitter"></span>
-											<span class="b-share-counter">15</span>
-										</a>
-									</span>
-									<span class="b-share-btn__wrap">
-										<a data-service="vkontakte" href="#" class="b-share__handle b-share__link b-share-btn__vkontakte" title="���������" target="_blank" rel="nofollow">
-											<span class="b-share-icon b-share-icon_vkontakte"></span>
-											<span class="b-share-counter">16</span>
-										</a>
-									</span>
-									<span class="b-share-btn__wrap">
-										<a data-service="yaru" href="#" class="b-share__handle b-share__link b-share-btn__yaru" title="�.��" target="_blank" rel="nofollow">
-											<span class="b-share-icon b-share-icon_yaru"></span>
-											<span class="b-share-counter">1</span>
-										</a>
-									</span>
-								</span>
-							</div>
-						</div>
-					</div>
-					
-					<div class="article-text">
-						<p>{{article.introduction}}</p>
-					</div>
-				</article>
+				<blog-post ng-repeat="article in articles"></blog-post>
 				
 				<button type="button" ng-click="openDialog()" class="btn">New Post</button>
 			</section>
 		</section>
 	</section>
 	
-	<div class="modal fade" id="articleModal" tabindex="-1" role="dialog" aria-labelledby="articleModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h3 class="modal-title">Add new article</h3>
-				</div>
-				<form class="form-horizontal" name="articleForm" role="form" ng-submit="submitArticle()" novalidate>
-					<div class="modal-body">
-						<div ng-class="{'has-error': articleForm.author.$invalid, 'has-success': !articleForm.author.$invalid}">
-							<label>Author: <input type="text" name="author" class="form-control" ng-model="newArticle.author" required /></label>
-							<span ng-show="articleForm.author.$error.required">Please specify the author</span>
-						</div>
-						<div>
-							<label>Image URL: <input type="text" name="imageURL" class="form-control" ng-model="newArticle.imageURL" /></label>
-						</div>
-						<div ng-class="{'has-error': articleForm.title.$invalid, 'has-success': !articleForm.title.$invalid}">
-							<label>Title: <input type="text" name="title" class="form-control" ng-model="newArticle.title" required /></label>
-							<span ng-show="articleForm.title.$error.required">Please specify the title</span>
-						</div>
-						<div ng-class="{'has-error': articleForm.text.$invalid, 'has-success': !articleForm.text.$invalid}">
-							<label>Text: <textarea name="text" class="form-control" ng-model="newArticle.text" required ></textarea></label>
-							<span ng-show="articleForm.text.$error.required">Please specify the text</span>
-						</div>
-					</div>
-					<div class="modal-footer">
-						<input type="submit" class="btn btn-primary" ng-disabled="articleForm.$invalid" value="Submit" />
-						<button class="btn btn-warning" ng-click="cancelDialog()">Cancel</button>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
+	<blog-popup />
 	
 	<footer></footer>
 	<script>

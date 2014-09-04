@@ -1,1 +1,54 @@
-<p>This is the post view.</p>
+<article>
+	<figure>
+		<img alt="" ng-src="{{article.image}}" />
+		<figcaption><a class="blog-title" href="#">{{article.title}}</a></figcaption>
+	</figure>
+	<div class="article-data">
+		<div class="article-data-item">
+			<span class="date-time-icon">{{article.date}}</span>
+		</div>
+		<div class="article-data-item">
+			<span class="author-icon">by <a class="author-link" href="#">{{article.author}}</a></span>
+		</div>
+		<div class="article-data-item social">
+			<div data-yasharetheme="counter" data-yasharequickservices="yaru,vkontakte,facebook,twitter,gplus" data-yasharel10n="ru" class="yashare-auto-init b-share_theme_counter">
+				<span class="b-share">
+					<span class="b-share-btn__wrap">
+						<a data-service="facebook" href="#" class="b-share__handle b-share__link b-share-btn__facebook" title="Facebook" target="_blank" rel="nofollow">
+							<span class="b-share-icon b-share-icon_facebook"></span>
+							<span class="b-share-counter">16</span>
+						</a>
+					</span>
+					<span class="b-share-btn__wrap">
+						<a data-service="gplus" href="#" class="b-share__handle b-share__link b-share-btn__gplus" title="Google Plus" target="_blank" rel="nofollow">
+							<span class="b-share-icon b-share-icon_gplus"></span>
+							<span class="b-share-counter">7</span>
+						</a>
+					</span>
+					<span class="b-share-btn__wrap">
+						<a data-service="twitter" href="#" class="b-share__handle b-share__link b-share-btn__twitter" title="Twitter" target="_blank" rel="nofollow">
+							<span class="b-share-icon b-share-icon_twitter"></span>
+							<span class="b-share-counter">15</span>
+						</a>
+					</span>
+					<span class="b-share-btn__wrap">
+						<a data-service="vkontakte" href="#" class="b-share__handle b-share__link b-share-btn__vkontakte" title="?????????" target="_blank" rel="nofollow">
+							<span class="b-share-icon b-share-icon_vkontakte"></span>
+							<span class="b-share-counter">16</span>
+						</a>
+					</span>
+					<span class="b-share-btn__wrap">
+						<a data-service="yaru" href="#" class="b-share__handle b-share__link b-share-btn__yaru" title="?.??" target="_blank" rel="nofollow">
+							<span class="b-share-icon b-share-icon_yaru"></span>
+							<span class="b-share-counter">1</span>
+						</a>
+					</span>
+				</span>
+			</div>
+		</div>
+	</div>
+	
+	<div class="article-text">
+		<p>{{article.introduction}}</p>
+	</div>
+</article>
