@@ -26,12 +26,18 @@
 }'; 
  
 angular.module('trainingAngularApp')
-	.controller('ArticlesController', function($scope, $filter){
-
-		$scope.articles = JSON.parse(jsonArticles).articles;
+	.controller('ArticlesController', ['$scope', '$filter', 'Postsservice', function($scope, $filter, Postsservice){
 		$scope.newArticle = {};
+		$scope.formState = 'Submit';
+		$scope.currentArticleId;
 		
-		$scope.openDialog = function() {
+		function showPosts() {
+			Postsservice.getPosts().then(function(posts){
+				$scope.articles = posts;
+			});
+		}
+		
+		function openDialog() {
 			if (!$scope.articleModal) {
 				$scope.articleModal = $('#articleModal');
 				$scope.articleModal.modal();
@@ -39,23 +45,83 @@ angular.module('trainingAngularApp')
 			$scope.articleModal.modal('show');
 		}
 		
+		function clearNewArticle() {
+			$scope.newArticle.author = '';
+			$scope.newArticle.title = '';
+			$scope.newArticle.body = '';
+			$scope.newArticle.imageURL = '';
+		}
+		
+		showPosts();
+
+		$scope.createNewPost = function() {
+			$scope.formState = 'Submit';
+			
+			openDialog();
+		}		
+		
 		$scope.cancelDialog = function() {
 			$scope.articleModal.modal('hide');
 		}
 		
 		$scope.submitArticle = function() {
-			$scope.articles.push({
+			var postObj = {
 				author: $scope.newArticle.author,
 				title: $scope.newArticle.title,
 				date: $filter('date')(new Date(), 'HH:mm MMM dd, yyyy'),
-				introduction: $scope.newArticle.text,	
+				body: $scope.newArticle.body,	
 				image: $scope.newArticle.imageURL
-			});
+			};
+			
+			if ($scope.formState === 'Submit') {
+				Postsservice.addPost(postObj)
+					.then(function(){
+						showPosts();
+						
+						clearNewArticle();
+					});
+			}
+			else {			
+				Postsservice.updatePost($scope.currentArticleId, $scope.newArticle)
+					.then(function(){
+						var element = $scope.articles.filter(function(element){
+							return element._id === $scope.currentArticleId;
+						})[0];	
+
+						element.author = $scope.newArticle.author;
+						element.title = $scope.newArticle.title;
+						element.body = $scope.newArticle.body;
+						element.imageURL = $scope.newArticle.imageURL;
+						
+						clearNewArticle();
+					});
+			}
+			
 			$scope.articleModal.modal('hide');
-			$scope.newArticle.author = '';
-			$scope.newArticle.title = '';
-			$scope.newArticle.text = '';
-			$scope.newArticle.imageURL = '';
 		}
-	})
+		
+		$scope.editArticle = function(event) {
+			event.preventDefault();
+						
+			$scope.formState = 'Edit';
+			
+			$scope.newArticle._id = this.article._id;
+			$scope.newArticle.author = this.article.author;
+			$scope.newArticle.title = this.article.title;
+			$scope.newArticle.body = this.article.body;
+			$scope.newArticle.imageURL = this.article.imageURL;
+			
+			$scope.currentArticleId = this.article._id;
+			
+			openDialog();			
+		}
+		
+		$scope.removeArticle = function(event){
+			event.preventDefault();
+			Postsservice.removePost(this.article._id)
+				.then(function(){
+					showPosts();
+				});
+		};
+	}]);
 	

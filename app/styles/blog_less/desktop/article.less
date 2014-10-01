@@ -4,7 +4,15 @@
 	margin-right: 255px;
 	
 	ARTICLE {
-		padding: 0 25px 50px 0;
+		margin: 0 25px 50px 0;
+		position: relative;
+		overflow: hidden;
+		
+		&:hover {
+			.edit-article, .remove-article {				
+				transform: translateY(0);
+			}
+		}
 	}
 	
 	.article-text {
@@ -16,6 +24,32 @@
 	
 	BUTTON {
 		margin-bottom: 30px;
+	}
+	
+	.edit-article, .remove-article {
+		position: absolute;
+		top: 0;
+		background-color: #d6dee6;
+		transform: translateY(-40px);
+		transition: transform 0.4s;
+		
+		A {
+			color: #fff;
+			display: inline-block;
+			padding: 5px 9px;
+		}
+		
+		&:hover {
+			background-color: rgba(0,0,0,0.7);
+		}
+	}
+	
+	.remove-article {
+		right: 0;
+	}
+	
+	.edit-article {
+		right: 33px;
 	}
 }
 		

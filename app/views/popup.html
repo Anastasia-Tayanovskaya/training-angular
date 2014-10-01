@@ -17,13 +17,13 @@
 						<label>Title: <input type="text" name="title" class="form-control" ng-model="newArticle.title" required /></label>
 						<span ng-show="articleForm.title.$error.required">Please specify the title</span>
 					</div>
-					<div ng-class="{'has-error': articleForm.text.$invalid, 'has-success': !articleForm.text.$invalid}">
-						<label>Text: <textarea name="text" class="form-control" ng-model="newArticle.text" required ></textarea></label>
-						<span ng-show="articleForm.text.$error.required">Please specify the text</span>
+					<div ng-class="{'has-error': articleForm.body.$invalid, 'has-success': !articleForm.body.$invalid}">
+						<label>Text: <textarea name="body" class="form-control" ng-model="newArticle.body" required ></textarea></label>
+						<span ng-show="articleForm.body.$error.required">Please specify the text</span>
 					</div>
 				</div>
 				<div class="modal-footer">
-					<input type="submit" class="btn btn-primary" ng-disabled="articleForm.$invalid" value="Submit" />
+					<input type="submit" class="btn btn-primary" ng-disabled="articleForm.$invalid" value="{{formState}}" />
 					<button type="button" class="btn btn-warning" ng-click="cancelDialog()">Cancel</button>
 				</div>
 			</form>

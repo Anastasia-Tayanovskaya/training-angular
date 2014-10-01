@@ -310,7 +310,13 @@ NAV {
   margin-right: 255px;
 }
 .blog-articles ARTICLE {
-  padding: 0 25px 50px 0;
+  margin: 0 25px 50px 0;
+  position: relative;
+  overflow: hidden;
+}
+.blog-articles ARTICLE:hover .edit-article,
+.blog-articles ARTICLE:hover .remove-article {
+  transform: translateY(0);
 }
 .blog-articles .article-text {
   padding: 15px 0;
@@ -320,6 +326,30 @@ NAV {
 }
 .blog-articles BUTTON {
   margin-bottom: 30px;
+}
+.blog-articles .edit-article,
+.blog-articles .remove-article {
+  position: absolute;
+  top: 0;
+  background-color: #d6dee6;
+  transform: translateY(-40px);
+  transition: transform 0.4s;
+}
+.blog-articles .edit-article A,
+.blog-articles .remove-article A {
+  color: #fff;
+  display: inline-block;
+  padding: 5px 9px;
+}
+.blog-articles .edit-article:hover,
+.blog-articles .remove-article:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.blog-articles .remove-article {
+  right: 0;
+}
+.blog-articles .edit-article {
+  right: 33px;
 }
 FIGURE IMG {
   width: 100%;
