@@ -22,6 +22,16 @@ angular.module('trainingAngularApp')
 			
 			return deferred.promise;
 		},
+		getPost: function(id) {
+			var deferred = $q.defer(),
+				post;
+				
+			post = PostFactory.get({_id: id}, function() {
+				deferred.resolve(post);
+			});
+			
+			return deferred.promise;
+		},
 		removePost: function(id) {
 			var deferred = $q.defer();
 			

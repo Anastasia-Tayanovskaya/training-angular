@@ -26,7 +26,7 @@
 }'; 
  
 angular.module('trainingAngularApp')
-	.controller('ArticlesController', ['$scope', '$filter', 'Postsservice', function($scope, $filter, Postsservice){
+	.controller('ArticlesController', ['$scope', '$filter', 'Postsservice', 'singlePostFactory', function($scope, $filter, Postsservice, singlePostFactory){
 		$scope.newArticle = {};
 		$scope.formState = 'Submit';
 		$scope.currentArticleId;
@@ -123,5 +123,13 @@ angular.module('trainingAngularApp')
 					showPosts();
 				});
 		};
+		
+		$scope.setArticleData = function() {
+			for (var prop in this.article) {
+				if (this.article.hasOwnProperty(prop)) {
+					singlePostFactory[prop] = this.article[prop];
+				}
+			}			
+		}
 	}]);
 	

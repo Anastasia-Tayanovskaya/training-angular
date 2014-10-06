@@ -1,14 +1,16 @@
+<button type="button" class="btn" ng-click="back();">Back to All Posts</button>
+
 <article>
 	<figure>
-		<img alt="" ng-src="{{article.image}}" />
-		<figcaption><a class="blog-title" href="/#/singlepost/{{article._id}}" ng-click="setArticleData();">{{article.title}}</a></figcaption>
+		<img alt="" ng-src="{{singleArticle.image}}" />
+		<figcaption><span class="blog-title">{{singleArticle.title}}</span></figcaption>
 	</figure>
 	<div class="article-data">
 		<div class="article-data-item">
-			<span class="date-time-icon">{{article.date}}</span>
+			<span class="date-time-icon">{{singleArticle.date}}</span>
 		</div>
 		<div class="article-data-item">
-			<span class="author-icon">by <a class="author-link" href="#">{{article.author}}</a></span>
+			<span class="author-icon">by <a class="author-link" href="#">{{singleArticle.author}}</a></span>
 		</div>
 		<div class="article-data-item social">
 			<div data-yasharetheme="counter" data-yasharequickservices="yaru,vkontakte,facebook,twitter,gplus" data-yasharel10n="ru" class="yashare-auto-init b-share_theme_counter">
@@ -49,8 +51,6 @@
 	</div>
 	
 	<div class="article-text">
-		<p>{{article.body || article.text}}</p>
+		<p>{{singleArticle.body}}</p>
 	</div>
-	<div class="edit-article"><a ng-click="editArticle($event)" href="#"><i class="fa fa-pencil"></i></a></div>
-	<div class="remove-article"><a ng-click="removeArticle($event)" href="#"><i class="fa fa-times"></i></a></div>
 </article>
