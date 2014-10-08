@@ -26,7 +26,7 @@
 }'; 
  
 angular.module('trainingAngularApp')
-	.controller('ArticlesController', ['$scope', '$filter', 'Postsservice', 'singlePostFactory', function($scope, $filter, Postsservice, singlePostFactory){
+	.controller('ArticlesController', ['$scope', '$filter', 'Postsservice', 'singlePostFactory', 'TextFactory', function($scope, $filter, Postsservice, singlePostFactory, TextFactory){
 		$scope.newArticle = {};
 		$scope.formState = 'Submit';
 		$scope.currentArticleId;
@@ -34,6 +34,9 @@ angular.module('trainingAngularApp')
 		function showPosts() {
 			Postsservice.getPosts().then(function(posts){
 				$scope.articles = posts;
+				for (var i = 0, len = $scope.articles.length; i < len; i++) {
+					$scope.articles[i].truncatedText = ($scope.articles[i].text || $scope.articles[i].body) ? TextFactory.trucateText($scope.articles[i].text || $scope.articles[i].body, 100) : '';
+				}
 			});
 		}
 		
@@ -92,6 +95,7 @@ angular.module('trainingAngularApp')
 						element.title = $scope.newArticle.title;
 						element.body = $scope.newArticle.body;
 						element.imageURL = $scope.newArticle.imageURL;
+						element.truncatedText = ($scope.newArticle.body) ? TextFactory.trucateText($scope.newArticle.body, 100) : '';
 						
 						clearNewArticle();
 					});

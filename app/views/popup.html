@@ -18,7 +18,8 @@
 						<span ng-show="articleForm.title.$error.required">Please specify the title</span>
 					</div>
 					<div ng-class="{'has-error': articleForm.body.$invalid, 'has-success': !articleForm.body.$invalid}">
-						<label>Text: <textarea name="body" class="form-control" ng-model="newArticle.body" required ></textarea></label>
+						<label>Text:</label>
+						 <textarea name="body" class="form-control" ng-model="newArticle.body" required ></textarea>
 						<span ng-show="articleForm.body.$error.required">Please specify the text</span>
 					</div>
 				</div>

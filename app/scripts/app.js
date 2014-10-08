@@ -1,5 +1,7 @@
 'use strict';
 
+angular.module('textManager', []); 
+ 
 /**
  * @ngdoc overview
  * @name trainingAngularApp
@@ -9,7 +11,7 @@
  * Main module of the application.
  */
 angular
-  .module('trainingAngularApp', ['ngResource', 'ngRoute'])
+  .module('trainingAngularApp', ['ngResource', 'ngRoute', 'textManager'])
   .config(['$routeProvider',
 	function($routeProvider) {
 		$routeProvider

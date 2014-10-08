@@ -49,7 +49,8 @@
 	</div>
 	
 	<div class="article-text">
-		<p>{{article.body || article.text}}</p>
+		<!--<p>{{article.body || article.text}}</p>-->
+		<p>{{article.truncatedText}}</p>
 	</div>
 	<div class="edit-article"><a ng-click="editArticle($event)" href="#"><i class="fa fa-pencil"></i></a></div>
 	<div class="remove-article"><a ng-click="removeArticle($event)" href="#"><i class="fa fa-times"></i></a></div>
