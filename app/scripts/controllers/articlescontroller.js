@@ -7,29 +7,11 @@
  * # ArticlescontrollerCtrl
  * Controller of the trainingAngularApp
  */
- 
- var jsonArticles = '{ \
-	"articles": [{ \
-		"title": "Blogotitle of blogopost about blogoflowers", \
-		"author": "Hyperraccoon", \
-		"image": "images/articles/article1.png",\
-		"date": "22:58 Jan 01, 2014",\
-		"introduction": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."\
-	},\
-	{\
-		"title": "Blogotitle about smth colorful",\
-		"author": "Hyperraccoon",\
-		"image": "images/articles/article2.png",\
-		"date": "22:59 Jan 01, 2014",\
-		"introduction": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."\
-	}]\
-}'; 
- 
+
 angular.module('trainingAngularApp')
 	.controller('ArticlesController', ['$scope', '$filter', 'Postsservice', 'singlePostFactory', 'TextFactory', function($scope, $filter, Postsservice, singlePostFactory, TextFactory){
 		$scope.newArticle = {};
 		$scope.formState = 'Submit';
-		$scope.currentArticleId;
 		
 		function showPosts() {
 			Postsservice.getPosts().then(function(posts){
@@ -61,11 +43,11 @@ angular.module('trainingAngularApp')
 			$scope.formState = 'Submit';
 			
 			openDialog();
-		}		
+		};		
 		
 		$scope.cancelDialog = function() {
 			$scope.articleModal.modal('hide');
-		}
+		};
 		
 		$scope.submitArticle = function() {
 			var postObj = {
@@ -102,7 +84,7 @@ angular.module('trainingAngularApp')
 			}
 			
 			$scope.articleModal.modal('hide');
-		}
+		};
 		
 		$scope.editArticle = function(event) {
 			event.preventDefault();
@@ -118,7 +100,7 @@ angular.module('trainingAngularApp')
 			$scope.currentArticleId = this.article._id;
 			
 			openDialog();			
-		}
+		};
 		
 		$scope.removeArticle = function(event){
 			event.preventDefault();
@@ -134,6 +116,6 @@ angular.module('trainingAngularApp')
 					singlePostFactory[prop] = this.article[prop];
 				}
 			}			
-		}
+		};
 	}]);
 	

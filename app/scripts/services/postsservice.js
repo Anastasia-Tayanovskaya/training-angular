@@ -59,5 +59,5 @@ angular.module('trainingAngularApp')
 			
 			return deferred.promise;
 		}
-	}
+	};
 }]);

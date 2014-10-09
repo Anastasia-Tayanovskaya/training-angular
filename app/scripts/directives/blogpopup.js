@@ -11,7 +11,6 @@ angular.module('trainingAngularApp')
     return {
 		restrict: 'E',
 		replace: true,
-		link: function postLink(scope, element, attrs) {},
 		templateUrl: '../../views/popup.html'
     };
   });

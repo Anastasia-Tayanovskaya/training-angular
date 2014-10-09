@@ -10,7 +10,6 @@ angular.module('trainingAngularApp')
   .directive('blogPost', function () {
     return {
       templateUrl: '../../views/post.html',
-      restrict: 'E',
-      link: function postLink(scope, element, attrs) {}
+      restrict: 'E'
     };
   });
